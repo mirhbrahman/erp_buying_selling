@@ -22,5 +22,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Admin area
 Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
     // User role
-    Route::resource('user-role', 'Admin\UserRole\UserRolesController')->except(['show']);
+    Route::resource('user-roles', 'Admin\UserRole\UserRolesController')->except(['show']);
+    Route::get('user-roles/delete/{user_role}', 'Admin\UserRole\UserRolesController@destroy')->name('user-roles.destroy');
+    // User
+    Route::resource('users', 'Admin\User\UsersController')->except(['show']);
+    Route::get('users/delete/{user}', 'Admin\User\UsersController@destroy')->name('users.destroy');
+    Route::get('users/verify/{user}', 'Admin\User\UsersController@verifyByAdmin')->name('users.verifyByAdmin');
+    
 });

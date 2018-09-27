@@ -7,7 +7,7 @@
         <div class="card-body">
     @include('includes.errors.validation_errors')
 
-            <form action="{{route('user-role.store')}}" method="post" enctype="" class="form-horizontal">
+            <form action="{{route('user-roles.store')}}" method="post" enctype="" class="form-horizontal">
                 {{ csrf_field() }}
                 <div class="row form-group">
                     <div class="col col-md-3">

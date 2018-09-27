@@ -91,7 +91,7 @@ class UserRolesController extends Controller
         if ($userRole->save()) {
             $request->session()->flash('success', 'User role update successful');
         }
-        return redirect()->route('user-role.index');
+        return redirect()->route('user-roles.index');
     }
 
     /**

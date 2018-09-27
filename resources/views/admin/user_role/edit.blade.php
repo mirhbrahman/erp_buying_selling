@@ -7,7 +7,7 @@
         <div class="card-body">
     @include('includes.errors.validation_errors')
 
-            <form action="{{route('user-role.update', $ur->id)}}" method="post" enctype="" class="form-horizontal">
+            <form action="{{route('user-roles.update', $ur->id)}}" method="post" enctype="" class="form-horizontal">
                 @csrf
                 @method('put')
                 <div class="row form-group">

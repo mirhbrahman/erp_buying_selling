@@ -13,7 +13,7 @@
             <div class="page-header float-right">
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
-                        <li><a href="{{route('user-role.create')}}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Add User Role</a></li>
+                        <li><a href="{{route('user-roles.create')}}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Add User Role</a></li>
                     </ol>
                 </div>
             </div>
@@ -36,12 +36,8 @@
                     <tr>
                         <td>{{$ur->name}}</td>
                         <td>
-                            <form action="{{route('user-role.destroy', $ur->id)}}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <a class="btn btn-sm btn-outline-primary" href="{{route('user-role.edit', $ur->id)}}"><i class="fa fa-edit"></i>Edit</a>
-                                <input type="submit" value="Delete" class="btn btn-sm btn-outline-danger" href="{{route('user-role.destroy', $ur->id)}}" onclick="return confirm('Are you sure you want to delete this item?');">
-                            </form>
+                            <a class="btn btn-sm btn-outline-primary" href="{{route('user-roles.edit', $ur->id)}}"><i class="fa fa-edit"></i>Edit</a>
+                            <a class="btn btn-sm btn-outline-danger" href="{{route('user-roles.destroy', $ur->id)}}" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa fa-trash"></i>Delete</a>
                         </td>
                     </tr>
                     @endforeach
