@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Admin area
+Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
+    // User role
+    Route::resource('user-role', 'Admin\UserRole\UserRolesController')->except(['show']);
+});
