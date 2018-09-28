@@ -36,9 +36,16 @@
                 </ul>
             </li>
 
-            
-           
-            
+            <li class="menu-item-has-children dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bank"></i>Bank</a>
+                <ul class="sub-menu children dropdown-menu">
+                    <li><i class="fa fa-credit-card"></i><a href="{{route('mobile-bank.index')}}">Mobile Bank</a></li>
+                    <li><i class="fa fa-credit-card"></i><a href="{{route('e-wallet.index')}}">E-Wallet</a></li>
+                </ul>
+            </li>
+
+
+
         </ul>
     </div>
     <!-- /.navbar-collapse -->

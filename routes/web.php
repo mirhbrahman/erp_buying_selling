@@ -35,14 +35,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('sys-police-station', 'Admin\Location\SysPoliceStationsController');
     Route::resource('sys-word', 'Admin\Location\SysWordsController');
     Route::resource('sys-village', 'Admin\Location\SysVillagesController');
+    // E-wallet
+    Route::resource('e-wallet', 'Admin\Bank\EWallet\EWalletsController', ['except' => ['create', 'show']]);
+    // Mobile bank
+    Route::resource('mobile-bank', 'Admin\Bank\MobileBank\MobileBanksController', ['except' => ['create', 'show']]);
 });
 
 // System location
-Route::group(['middleware'=>'auth'],function(){
+Route::group(['middleware' => 'auth'], function () {
     //.........get location for select option [ajax]
-    Route::post('get-sys-division','PublicLocation\SysLocationController@getDivision')->name('getSysDivision');
-    Route::post('get-sys-city','PublicLocation\SysLocationController@getCity')->name('getSysCity');
-    Route::post('get-sys-police-station','PublicLocation\SysLocationController@getPoliceStation')->name('getSysPoliceStation');
-    Route::post('get-sys-word','PublicLocation\SysLocationController@getWord')->name('getSysWord');
-    Route::post('get-sys-village','PublicLocation\SysLocationController@getVillage')->name('getSysVillage');
+    Route::post('get-sys-division', 'PublicLocation\SysLocationController@getDivision')->name('getSysDivision');
+    Route::post('get-sys-city', 'PublicLocation\SysLocationController@getCity')->name('getSysCity');
+    Route::post('get-sys-police-station', 'PublicLocation\SysLocationController@getPoliceStation')->name('getSysPoliceStation');
+    Route::post('get-sys-word', 'PublicLocation\SysLocationController@getWord')->name('getSysWord');
+    Route::post('get-sys-village', 'PublicLocation\SysLocationController@getVillage')->name('getSysVillage');
 });
