@@ -153,7 +153,7 @@ class UsersController extends Controller
     {
         $user->is_verify = User::VERIFY;
         $user->verification_token = null;
-        // Verify user automaticaly activated
+        // Verified user automaticaly activated
         $user->is_active = User::ACTIVE;
         
         if($user->save()){

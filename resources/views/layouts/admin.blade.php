@@ -32,6 +32,37 @@
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
 
+<style>
+    .btn-group-sm>.btn, .btn-sm {
+    padding: 1px 3px;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+}
+.table td, .table th {
+    padding: 0.50rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+aside.left-panel {
+    background: #272c33;
+    display: table-cell;
+    height: 100vh;
+    min-height: 100%;
+    padding: 0 25px;
+    vertical-align: top;
+    width: 250px;
+    transition: width 0.3s ease;
+}
+.navbar .navbar-nav li.menu-item-has-children .sub-menu {
+    background: #272c33;
+    border: none;
+    box-shadow: none;
+    overflow-y: hidden;
+    padding: 0 0 0 20px;
+}
+</style>
 <script src="{{asset('admin/js/vendor/jquery-2.1.4.min.js')}}"></script>
 </head>
 
