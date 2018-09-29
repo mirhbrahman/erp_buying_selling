@@ -72,7 +72,7 @@ aside.left-panel {
     <!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
-    @include('partials.admin.navbar')
+    @include('partials.navbar')
     </aside>
     <!-- /#left-panel -->
 
