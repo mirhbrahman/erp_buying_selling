@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin\Bank\EWallet;
 
 use Session;
 use Illuminate\Http\Request;
-use App\Models\Admin\Bank\EWallet;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Bank\SysEWallet;
 
 class EWalletsController extends Controller
 {

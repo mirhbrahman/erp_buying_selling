@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Bank\MobileBank;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Bank\MobileBank;
+use App\Models\Admin\Bank\SysMobileBank;
 
 
 class MobileBanksController extends Controller

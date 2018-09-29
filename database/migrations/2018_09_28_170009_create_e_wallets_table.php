@@ -13,7 +13,7 @@ class CreateEWalletsTable extends Migration
      */
     public function up()
     {
-        Schema::create('e_wallets', function (Blueprint $table) {
+        Schema::create('sys_e_wallets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
