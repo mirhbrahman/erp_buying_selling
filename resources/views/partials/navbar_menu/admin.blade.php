@@ -35,3 +35,12 @@
         <li><i class="fa fa-credit-card"></i><a href="{{route('product-section-sub-category.index')}}">Sub-Category</a></li>
     </ul>
 </li>
+
+<li class="menu-item-has-children dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-product-hunt"></i>Product Accessories</a>
+    <ul class="sub-menu children dropdown-menu">
+        <li><i class="fa fa-id-badge"></i><a href="{{route('product-accessories-brand.index')}}">Brand</a></li>
+        <li><i class="fa fa-id-badge"></i><a href="{{route('product-accessories-size.index')}}">Size</a></li>
+        <li><i class="fa fa-id-badge"></i><a href="{{route('product-accessories-color.index')}}">Color</a></li>
+    </ul>
+</li>

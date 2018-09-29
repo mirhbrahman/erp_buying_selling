@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{asset('admin/scss/style.css')}}">
     <link href="{{asset('admin/css/lib/vector-map/jqvmap.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('admin/css/lib/datatable/dataTables.bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('color_picker/spectrum.css')}}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'> @yield('styles')
     <link rel="stylesheet" type="text/css" id="theme" href="{{asset('css/toastr.min.css')}}" />
@@ -176,6 +177,7 @@ aside.left-panel {
     <script src="{{asset('admin/js/lib/data-table/buttons.print.min.js')}}"></script>
     <script src="{{asset('admin/js/lib/data-table/buttons.colVis.min.js')}}"></script>
     <script src="{{asset('admin/js/lib/data-table/datatables-init.js')}}"></script>
+    <script src="{{asset('color_picker/spectrum.js')}}"></script>
 
 
     <script type="text/javascript">

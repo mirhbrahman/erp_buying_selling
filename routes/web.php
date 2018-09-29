@@ -46,10 +46,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     //Category
     Route::resource('product-section-category', 'Admin\ProductSection\Category\SysProductCategoriesController');
     Route::get('product-section-category/delete/{id}', 'Admin\ProductSection\Category\SysProductCategoriesController@destroy')->name('product-section-category.destroy');
-    // //Sub category
+    //Sub category
     Route::resource('product-section-sub-category', 'Admin\ProductSection\SubCategory\SysProductSubCategoriesController');
     Route::get('product-section-sub-category/delete/{id}', 'Admin\ProductSection\SubCategory\SysProductSubCategoriesController@destroy')->name('product-section-sub-category.destroy');
     Route::get('category-by-ajax', 'Admin\ProductSection\SubCategory\SysProductSubCategoriesController@getCategoryAjax')->name('category-ajax');
+    // Product accessories
+    // Brand
+    Route::resource('product-accessories-brand', 'Admin\ProductAccessories\Brand\SysProductBrandsController');
+    Route::get('product-accessories-brand/delete/{id}', 'Admin\ProductAccessories\Brand\SysProductBrandsController@destroy')->name('product-accessories-brand.destroy');
+    // Size
+    Route::resource('product-accessories-size', 'Admin\ProductAccessories\Size\SysProductSizesController');
+    Route::get('product-accessories-size/delete/{id}', 'Admin\ProductAccessories\Size\SysProductSizesController@destroy')->name('product-accessories-size.destroy');
+    // Color
+    Route::resource('product-accessories-color', 'Admin\ProductAccessories\Color\SysProductColorsController');
+    Route::get('product-accessories-color/delete/{id}', 'Admin\ProductAccessories\Color\SysProductColorsController@destroy')->name('product-accessories-color.destroy');
 });
 
 // System location
