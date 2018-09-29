@@ -26,3 +26,12 @@
         <li><i class="fa fa-credit-card"></i><a href="{{route('e-wallet.index')}}">E-Wallet</a></li>
     </ul>
 </li>
+
+<li class="menu-item-has-children dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bank"></i>Product Section</a>
+    <ul class="sub-menu children dropdown-menu">
+        <li><i class="fa fa-credit-card"></i><a href="{{route('product-section-type.index')}}">Type</a></li>
+        <li><i class="fa fa-credit-card"></i><a href="{{route('product-section-category.index')}}">Category</a></li>
+        <li><i class="fa fa-credit-card"></i><a href="{{route('product-section-sub-category.index')}}">Sub-Category</a></li>
+    </ul>
+</li>

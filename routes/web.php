@@ -39,6 +39,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('e-wallet', 'Admin\Bank\EWallet\EWalletsController', ['except' => ['create', 'show']]);
     // Mobile bank
     Route::resource('mobile-bank', 'Admin\Bank\MobileBank\MobileBanksController', ['except' => ['create', 'show']]);
+    // Product section
+    // Type
+    Route::resource('product-section-type', 'Admin\ProductSection\Type\SysProductTypesController');
+    Route::get('product-section-type/delete/{id}', 'Admin\ProductSection\Type\SysProductTypesController@destroy')->name('product-section-type.destroy');
+    //Category
+    Route::resource('product-section-category', 'Admin\ProductSection\Category\SysProductCategoriesController');
+    Route::get('product-section-category/delete/{id}', 'Admin\ProductSection\Category\SysProductCategoriesController@destroy')->name('product-section-category.destroy');
+    // //Sub category
+    Route::resource('product-section-sub-category', 'Admin\ProductSection\SubCategory\SysProductSubCategoriesController');
+    Route::get('product-section-sub-category/delete/{id}', 'Admin\ProductSection\SubCategory\SysProductSubCategoriesController@destroy')->name('product-section-sub-category.destroy');
+    Route::get('category-by-ajax', 'Admin\ProductSection\SubCategory\SysProductSubCategoriesController@getCategoryAjax')->name('category-ajax');
 });
 
 // System location
