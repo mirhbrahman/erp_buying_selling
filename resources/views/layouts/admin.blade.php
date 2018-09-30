@@ -63,6 +63,18 @@ aside.left-panel {
     overflow-y: hidden;
     padding: 0 0 0 20px;
 }
+.navbar .navbar-nav li > a .menu-icon {
+    color: #8b939b;
+    float: left;
+    margin-top: 8px;
+    width: 35px;
+    text-align: left;
+    z-index: 9;
+}
+.navbar .navbar-brand img {
+    max-width: 80px;
+    padding: 5px;
+}
 </style>
 <script src="{{asset('admin/js/vendor/jquery-2.1.4.min.js')}}"></script>
 </head>
@@ -95,6 +107,7 @@ aside.left-panel {
                 </div>
 
                 <div class="col-sm-5">
+                   
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img class="user-avatar rounded-circle" src="{{asset('admin/imgs/default.png')}}" alt="User Avatar">
@@ -102,7 +115,6 @@ aside.left-panel {
 
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
-
                              <form  id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-sm">Logout</button>
@@ -110,7 +122,7 @@ aside.left-panel {
 
                         </div>
                     </div>
-
+                    <p class="pull-right" style="margin-top:5px;margin-bottom:0;padding-right:5px;">{{ Auth::user()->name }}</p>
                 </div>
             </div>
 
