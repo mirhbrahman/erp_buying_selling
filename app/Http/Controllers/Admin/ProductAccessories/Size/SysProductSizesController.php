@@ -39,7 +39,7 @@ class SysProductSizesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:2|max:200|unique:sys_product_sizes',
+            'name' => 'required|min:1|max:200|unique:sys_product_sizes',
         ]);
 
         $size = new SysProductSize();
@@ -89,7 +89,7 @@ class SysProductSizesController extends Controller
         $size = SysProductSize::find($id);
 
         $this->validate($request, [
-            'name' => 'required|min:2|max:200|unique:sys_product_sizes,name,' . $size->id,
+            'name' => 'required|min:1|max:200|unique:sys_product_sizes,name,' . $size->id,
         ]);
 
         $size->name = strtolower($request->name);

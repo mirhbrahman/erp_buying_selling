@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Admin area
+// Admin Area
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // User role
     Route::resource('user-roles', 'Admin\UserRole\UserRolesController')->except(['show']);
@@ -70,4 +70,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('get-sys-police-station', 'PublicLocation\SysLocationController@getPoliceStation')->name('getSysPoliceStation');
     Route::post('get-sys-word', 'PublicLocation\SysLocationController@getWord')->name('getSysWord');
     Route::post('get-sys-village', 'PublicLocation\SysLocationController@getVillage')->name('getSysVillage');
+});
+
+
+// Produt Area
+Route::group(['prefix' => 'product'], function () {
+    Route::resource('products', 'Product\ProductsController');
+
+    // Get product section by ajax request
+    Route::post('p-category', 'Product\ProductSectionController@getCategory')->name('product.ajax.getCategory');
+    Route::post('p-sub-category', 'Product\ProductSectionController@getSubCategory')->name('product.ajax.getSubCategory');
 });
