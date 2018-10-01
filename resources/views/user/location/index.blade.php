@@ -13,7 +13,7 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="{{ route('product-location.create') }}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i>Update Location</a></li>
+                            <li><a href="{{ route('product-location.create') }}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i> Update Location</a></li>
                         </ol>
                     </div>
                 </div>
