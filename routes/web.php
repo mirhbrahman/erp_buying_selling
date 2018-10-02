@@ -85,10 +85,15 @@ Route::group(['middleware' => 'auth'], function () {
 // Produt Area
 Route::group(['prefix' => 'product'], function () {
     Route::resource('products', 'Product\ProductsController');
-
+    // Product images
+    Route::get('product-image-upload', 'Product\ProductImagesController@index')->name('product.imageUpload.index');
+    Route::post('product-image-upload', 'Product\ProductImagesController@store')->name('product.imageUpload.store');
     // Get product section by ajax request
     Route::post('p-category', 'Product\ProductSectionController@getCategory')->name('product.ajax.getCategory');
     Route::post('p-sub-category', 'Product\ProductSectionController@getSubCategory')->name('product.ajax.getSubCategory');
+    // Get product brand by ajax request
+    Route::post('p-brand', 'Product\ProductAccessoriesController@getBrand')->name('product.ajax.getBrand');
+    
 });
 // User location
 Route::group(['prefix'=> 'user','middleware' => 'auth'], function () {
