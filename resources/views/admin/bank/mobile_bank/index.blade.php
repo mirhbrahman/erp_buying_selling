@@ -1,4 +1,4 @@
-@extends('layouts.admin') 
+@extends('layouts.admin')
 @section('content')
 <div class="col-sm-12">
     <div class="col-sm-6">
@@ -32,9 +32,9 @@
                             <td>{{$mobileBank->name}}</td>
                             <td>
                                 {{Form::open(['route'=>['mobile-bank.destroy',$mobileBank->id],'method'=>'DELETE'])}}
-                                <a href="{{route('mobile-bank.edit',$mobileBank->id)}}" class="btn btn-sm btn-outline-info">Edit</a>                                
+                                <a href="{{route('mobile-bank.edit',$mobileBank->id)}}" class="btn btn-sm btn-outline-info">Edit</a>
                                 {{Form::submit('Delete',['class'=>'btn btn-sm btn-outline-danger', "onclick" => "return confirm('Are
-                                you sure you want to delete this item?');"])}} 
+                                you sure you want to delete this item?');"])}}
                                 {{Form::close()}}
                             </td>
                         </tr>
