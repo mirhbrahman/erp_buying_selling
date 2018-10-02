@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
- */
+*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -60,7 +60,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // Color
     Route::resource('product-accessories-color', 'Admin\ProductAccessories\Color\SysProductColorsController');
     Route::get('product-accessories-color/delete/{id}', 'Admin\ProductAccessories\Color\SysProductColorsController@destroy')->name('product-accessories-color.destroy');
+    // Location
+    Route::resource('product-location', 'User\Location\UserLocationsController');
+    Route::get('division', 'User\Location\UserLocationsController@getDivision')->name('division');
+    Route::get('city', 'User\Location\UserLocationsController@getCity')->name('city');
+    Route::get('policeStation', 'User\Location\UserLocationsController@getPoliceStation')->name('policeStation');
+    Route::get('word', 'User\Location\UserLocationsController@getWord')->name('word');
+    Route::get('village', 'User\Location\UserLocationsController@getVillage')->name('village');
+
 });
+
+
 
 // System location
 Route::group(['middleware' => 'auth'], function () {
@@ -72,7 +82,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('get-sys-village', 'PublicLocation\SysLocationController@getVillage')->name('getSysVillage');
 });
 
-
 // Produt Area
 Route::group(['prefix' => 'product'], function () {
     Route::resource('products', 'Product\ProductsController');
@@ -80,4 +89,8 @@ Route::group(['prefix' => 'product'], function () {
     // Get product section by ajax request
     Route::post('p-category', 'Product\ProductSectionController@getCategory')->name('product.ajax.getCategory');
     Route::post('p-sub-category', 'Product\ProductSectionController@getSubCategory')->name('product.ajax.getSubCategory');
+});
+// User location
+Route::group(['prefix'=> 'user','middleware' => 'auth'], function () {
+    Route::resource('user-location', 'User\Location\UserLocationsController')->only(['index','create','store']);
 });

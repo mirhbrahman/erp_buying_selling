@@ -39,10 +39,7 @@
                                 {{Form::close()}}
                             </td>
                         </tr>
-                        @endforeach @else
-                        <tr>
-                            <td colspan="2">No data found</td>
-                        </tr>
+                        @endforeach 
                         @endif
                     </tbody>
                 </table>

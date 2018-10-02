@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Bank\EWallet;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Bank\SysEWallet;
+use App\Models\Admin\Bank\EWallet;
 
 class EWalletsController extends Controller
 {

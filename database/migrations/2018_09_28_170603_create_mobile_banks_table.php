@@ -13,7 +13,7 @@ class CreateMobileBanksTable extends Migration
      */
     public function up()
     {
-        Schema::create('sys_mobile_banks', function (Blueprint $table) {
+        Schema::create('mobile_banks', function (Blueprint $table) {
             $table->increments('id');
             $table->text('name');
             $table->timestamps();
