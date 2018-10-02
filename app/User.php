@@ -56,6 +56,8 @@ class User extends Authenticatable
 
     // Supplier
     public function isSupplier(){
-        return $this->role->name == 'SUPPLIER';
+        if($this->role){
+            return $this->role->name == 'SUPPLIER';
+        }
     }
 }
