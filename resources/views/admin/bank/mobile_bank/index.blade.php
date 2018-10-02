@@ -38,8 +38,7 @@
                                 {{Form::close()}}
                             </td>
                         </tr>
-                        @endforeach @else
-                        
+                        @endforeach
                         @endif
                     </tbody>
                 </table>
