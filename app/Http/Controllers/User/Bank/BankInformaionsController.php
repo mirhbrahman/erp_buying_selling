@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Bank;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User\Bank\UserEWallet;
 use App\Models\User\Bank\UserBankInfo;
 use App\Models\User\Bank\UserMobileBank;
 
@@ -19,7 +20,8 @@ class BankInformaionsController extends Controller
     {
         return view('user.bank.bank_info.index')
                 ->with('userbankinfos', UserBankInfo::all())
-                ->with('userMobileBanks', UserMobileBank::all());
+                ->with('userMobileBanks', UserMobileBank::all())
+                ->with('userEWallets', UserEWallet::all());
     }
 
     /**

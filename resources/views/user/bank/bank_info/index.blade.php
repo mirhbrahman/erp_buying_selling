@@ -136,22 +136,26 @@
                                 <table class="table" style="margin-bottom:0">
                                     <thead>
                                         <tr>
-                                            <th>Account Name</th>
-                                            <th>Bank Name</th>
+                                            <th>E-Wallet Name</th>
+                                            <th>E-Wallet Email/Number</th>
                                             <th>Option</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>sdfsdf</td>
-                                            <td>sdf</td>
-                                            <td><a href="" class="btn btn-sm btn-secondary"> <i class="fa fa-cog" aria-hidden="true"></i> Edit</a></td>
-                                        </tr>
+                                        @if ($userEWallets)
+                                            @foreach ($userEWallets as $userEWallet)
+                                                <tr>
+                                                    <td>{{ ucwords($userEWallet->eWallet->name) }}</td>
+                                                    <td>{{ $userEWallet->ewallet_number }}</td>
+                                                    <td><a href="{{ route('user-e-wallet.edit', $userEWallet->id) }}" class="btn btn-sm btn-secondary"> <i class="fa fa-cog" aria-hidden="true"></i> Edit</a></td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                                 <hr style="margin-top: 0">
                                 <div class="text-center">
-                                    <a class="btn btn-sm btn-primary" href=""> <i class="fa fa-plus" aria-hidden="true"></i> Add</a>
+                                    <a class="btn btn-sm btn-primary" href="{{ route('user-e-wallet.create') }}"> <i class="fa fa-plus" aria-hidden="true"></i> Add</a>
                                 </div>
                             </div>
                         </div>

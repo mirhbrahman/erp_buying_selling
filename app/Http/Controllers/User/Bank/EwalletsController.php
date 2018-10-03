@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\User\Bank;
 
+use Session;
 use Illuminate\Http\Request;
+use App\Models\Admin\Bank\EWallet;
 use App\Http\Controllers\Controller;
+use App\Models\User\Bank\UserEWallet;
 
 class EwalletsController extends Controller
 {
@@ -24,7 +27,8 @@ class EwalletsController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.bank.e_wallet.create')
+                ->with('eWallets', EWallet::all());
     }
 
     /**
@@ -35,7 +39,23 @@ class EwalletsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'e_wallet_id' => 'required',
+            'ewallet_number' => 'required|min:2|max:191',
+        ]);
+
+        $userEWallet = new UserEWallet();
+
+        $userEWallet->e_wallet_id = $request->e_wallet_id;
+        $userEWallet->ewallet_number = $request->ewallet_number;
+
+        if ($userEWallet->save()) {
+
+            Session::flash('success', 'E-Wallet create successfull');
+
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -57,7 +77,9 @@ class EwalletsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('user.bank.e_wallet.edit')
+                ->with('eWallets', EWallet::all())
+                ->with('userEWallet', UserEWallet::find($id));
     }
 
     /**
@@ -69,7 +91,20 @@ class EwalletsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'e_wallet_id' => 'required',
+            'ewallet_number' => 'required|min:2|max:191',
+        ]);
+
+        $userEWallet = UserEWallet::find($id);
+
+        $userEWallet->e_wallet_id = $request->e_wallet_id;
+        $userEWallet->ewallet_number = $request->ewallet_number;
+
+        if ($userEWallet->save()) {
+            Session::flash('success', 'E-Wallet update successfull');
+        }
+        return redirect()->route('user-bank-info.index');
     }
 
     /**
@@ -80,6 +115,11 @@ class EwalletsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $userEWallet = UserEWallet::find($id);
+
+        if ($userEWallet->delete()) {
+            Session::flash('success', 'E-Wallet delete successfull');
+        }
+        return redirect()->route('user-bank-info.index');
     }
 }

@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="col-sm-12">
-                        <input type="submit" value="Update Mobile Bank" class="btn btn-sm btn-primary pull-right">
+                        <input type="submit" value="Add Mobile Bank" class="btn btn-sm btn-primary pull-right">
                     </div>
                 </form>
             </div>
