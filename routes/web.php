@@ -85,4 +85,8 @@ Route::group(['middleware' => 'auth'], function () {
 // User location
 Route::group(['prefix'=> 'user','middleware' => 'auth'], function () {
     Route::resource('user-location', 'User\Location\UserLocationsController')->only(['index','create','store']);
+    Route::resource('user-bank-info', 'User\Bank\BankInformaionsController');
+    Route::get('user-bank-info/delete/{id}', 'User\Bank\BankInformaionsController@destroy')->name('user-bank-info.destroy');
+    Route::resource('user-mobile-bank', 'User\Bank\MobileBanksController');
+    Route::get('user-mobile-bank/delete/{id}', 'User\Bank\MobileBanksController@destroy')->name('user-mobile-bank.destroy');
 });
