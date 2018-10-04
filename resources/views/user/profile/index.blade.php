@@ -15,13 +15,23 @@
                     <div class="form-group col-md-8">
                         <h3>User Profile</h3>
                         <br />
-                        <label>Name: </label>
-                        {{ ucwords(Auth::user()->name) }}
-                        <br>
-                        <label>Email: </label>
-                        {{ Auth::user()->email }}
-                        <br>
+
+                        <div class="col-sm-4">
+                            <label>Name: </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <p>{{ ucwords(Auth::user()->name) }}</p>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label>Email: </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <p>{{ Auth::user()->email }}</p>
+                        </div>
+
                         <a href="{{ route('user-profile.edit', Auth::user()->id) }}" class="btn btn-secondary btn-sm pull-right"><i class="fa fa-gear"></i> Account Setting</a>
+
                     </div>
                 </div>
             </div>
