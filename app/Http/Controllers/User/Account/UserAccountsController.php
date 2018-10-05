@@ -6,8 +6,9 @@ use Auth;
 use Session;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User\Profile\UserProfile;
 
 class UserAccountsController extends Controller
 {
@@ -18,7 +19,10 @@ class UserAccountsController extends Controller
      */
     public function index()
     {
-        return view('user.account.index');
+        $user_id = Auth::user()->id;
+
+        return view('user.account.index')
+                ->with('userProfile', UserProfile::where('user_id', $user_id)->first());
     }
 
 

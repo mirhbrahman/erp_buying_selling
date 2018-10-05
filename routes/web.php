@@ -86,4 +86,5 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['prefix'=> 'user','middleware' => 'auth'], function () {
     Route::resource('user-location', 'User\Location\UserLocationsController')->only(['index','create','store']);
     Route::resource('user-account', 'User\Account\UserAccountsController');
+    Route::resource('user-profile', 'User\Profile\UserProfilesController');
 });

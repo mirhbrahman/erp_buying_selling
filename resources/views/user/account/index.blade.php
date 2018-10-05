@@ -5,7 +5,7 @@
         <section style="padding-bottom: 50px; padding-top: 50px;">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="{{ asset('img/250x250.png') }}" class="img-rounded img-responsive" />
+                    <img src="{{ $userProfile->avater }}" class="img-rounded img-responsive" />
                     <br />
                     <br />
                     <label>Phone Number</label> <br>
@@ -14,38 +14,38 @@
                         <label>Work: </label>
                     </div>
                     <div class="col-sm-7">
-                        <p>0188200241</p>
+                        <p>{{ $userProfile->work_number }}</p>
                     </div>
 
                     <div class="col-sm-5">
                         <label>Personal: </label>
                     </div>
                     <div class="col-sm-7">
-                        <p>0188200241</p>
+                        <p>{{ $userProfile->personal_number }}</p>
                     </div>
                     <br> <br>
-                    <hr>
-
-                    <div class="col-sm-5">
-                        <label>Date of Birth:  </label>
-                    </div>
-                    <div class="col-sm-7">
-                        <p>23 Mar 1995</p>
-                    </div>
-                    <br>
                     <hr>
 
                     <div class="col-sm-5">
                         <label>Fax Number:  </label>
                     </div>
                     <div class="col-sm-7">
-                        <p>545674654</p>
+                        <p>{{ $userProfile->fax_number }}</p>
+                    </div>
+                    <br>
+                    <hr>
+
+                    <div class="col-sm-5">
+                        <label>Date of Birth:  </label>
+                    </div>
+                    <div class="col-sm-7">
+                        <p>{{ $userProfile->date_of_birth }}</p>
                     </div>
                     <br>
                     <hr>
 
                     <div class="" style="text-align: center">
-                        <a href="" class="btn btn-success btn-sm"><i class="fa fa-wrench"></i> Profile Setting</a>
+                        <a href="{{ route('user-profile.create') }}" class="btn btn-success btn-sm"><i class="fa fa-wrench"></i> Profile Setting</a>
                     </div>
                     <br />
                 </div>

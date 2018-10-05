@@ -20,11 +20,15 @@ class CreateUserProfilesTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->string('name');
+            $table->string('avater');
 
-            $table->string('email')->unique();
+            $table->string('work_number');
 
-            $table->string('password');
+            $table->string('personal_number');
+
+            $table->string('fax_number');
+            
+            $table->string('date_of_birth');
 
             $table->timestamps();
         });

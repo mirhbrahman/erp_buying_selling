@@ -2,7 +2,7 @@
 @section('content')
     <div class="col-md-12" style="padding:0">
         <div class="card">
-            <div class="card-header">Update Profile</div>
+            <div class="card-header">Update Account</div>
 
             <div class="card-body">
                 @include('includes.errors.validation_errors')
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="col-sm-12">
-                        <input type="submit" value="Update" class="btn btn-sm btn-primary pull-right">
+                        <input type="submit" value="Update Account" class="btn btn-sm btn-primary pull-right">
                     </div>
                 </form>
             </div>
