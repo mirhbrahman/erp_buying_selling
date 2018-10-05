@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\Profile;
+namespace App\Http\Controllers\User\Account;
 
 use Auth;
 use Session;
@@ -8,9 +8,8 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
-use App\Models\User\Profile\UserProfile;
 
-class UserProfilesController extends Controller
+class UserAccountsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,13 +18,13 @@ class UserProfilesController extends Controller
      */
     public function index()
     {
-        return view('user.profile.index');
+        return view('user.account.index');
     }
 
 
     public function edit($id)
     {
-        return view('user.profile.edit')
+        return view('user.account.edit')
                 ->with('user', Auth::user());
     }
 
@@ -70,7 +69,7 @@ class UserProfilesController extends Controller
             Session::flash('success', 'Account setting update successfull');
         }
 
-        return redirect()->route('user-profile.index');
+        return redirect()->route('user-account.index');
     }
 
 }
