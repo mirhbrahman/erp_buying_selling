@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\User\Bank;
 
+use Auth;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User\Bank\UserEWallet;
 use App\Models\User\Bank\UserBankInfo;
-use App\Models\User\Bank\UserMobileBank;
 
 class BankInformaionsController extends Controller
 {
@@ -18,10 +17,6 @@ class BankInformaionsController extends Controller
      */
     public function index()
     {
-        return view('user.bank.bank_info.index')
-                ->with('userbankinfos', UserBankInfo::all())
-                ->with('userMobileBanks', UserMobileBank::all())
-                ->with('userEWallets', UserEWallet::all());
     }
 
     /**
@@ -53,6 +48,7 @@ class BankInformaionsController extends Controller
 
         $userBankInfo = new UserBankInfo();
 
+        $userBankInfo->user_id = Auth::user()->id;
         $userBankInfo->bank_name = strtolower($request->bank_name);
         $userBankInfo->account_name = $request->account_name;
         $userBankInfo->account_number = $request->account_number;
@@ -114,6 +110,7 @@ class BankInformaionsController extends Controller
 
         $userBankInfo = UserBankInfo::find($id);
 
+        $userBankInfo->user_id = Auth::user()->id;
         $userBankInfo->bank_name = strtolower($request->bank_name);
         $userBankInfo->account_name = $request->account_name;
         $userBankInfo->account_number = $request->account_number;
@@ -128,7 +125,7 @@ class BankInformaionsController extends Controller
 
         }
 
-        return redirect()->route('user-bank-info.index');
+        return redirect()->route('user.bank.index');
     }
 
     /**

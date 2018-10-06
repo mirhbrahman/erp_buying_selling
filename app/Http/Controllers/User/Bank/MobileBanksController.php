@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User\Bank;
 
+use Auth;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -49,6 +50,7 @@ class MobileBanksController extends Controller
 
         $userMobileBank = new UserMobileBank();
 
+        $userMobileBank->user_id = Auth::user()->id;
         $userMobileBank->country_id = strtolower($request->country_id);
         $userMobileBank->mobile_bank_id = $request->mobile_bank_id;
         $userMobileBank->account_number = $request->account_number;
@@ -104,6 +106,7 @@ class MobileBanksController extends Controller
 
         $userMobileBank = UserMobileBank::find($id);
 
+        $userMobileBank->user_id = Auth::user()->id;
         $userMobileBank->country_id = strtolower($request->country_id);
         $userMobileBank->mobile_bank_id = $request->mobile_bank_id;
         $userMobileBank->account_number = $request->account_number;
@@ -114,7 +117,7 @@ class MobileBanksController extends Controller
 
         }
 
-        return redirect()->route('user-bank-info.index');
+        return redirect()->route('user.bank.index');
     }
 
     /**

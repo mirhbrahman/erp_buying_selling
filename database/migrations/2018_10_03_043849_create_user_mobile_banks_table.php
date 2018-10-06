@@ -15,16 +15,14 @@ class CreateUserMobileBanksTable extends Migration
     {
         Schema::create('user_mobile_banks', function (Blueprint $table) {
             $table->increments('id');
-
+            $table->integer('user_id')->unsigned();
             $table->integer('country_id')->unsigned();
-
-            $table->foreign('country_id')->references('id')->on('sys_countries')->onDelete('cascade');
-
             $table->integer('mobile_bank_id')->unsigned();
+            $table->string('account_number');
 
             $table->foreign('mobile_bank_id')->references('id')->on('mobile_banks')->onDelete('cascade');
-
-            $table->string('account_number');
+            $table->foreign('country_id')->references('id')->on('sys_countries')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

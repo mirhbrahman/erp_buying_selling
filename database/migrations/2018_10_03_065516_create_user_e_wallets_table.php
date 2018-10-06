@@ -15,14 +15,13 @@ class CreateUserEWalletsTable extends Migration
     {
         Schema::create('user_e_wallets', function (Blueprint $table) {
             $table->increments('id');
-
+            $table->integer('user_id')->unsigned();
             $table->integer('e_wallet_id')->unsigned();
+            $table->string('ewallet_number');
+            $table->timestamps();
 
             $table->foreign('e_wallet_id')->references('id')->on('e_wallets')->onDelete('cascade');
-
-            $table->string('ewallet_number');
-
-            $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

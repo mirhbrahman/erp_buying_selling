@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User\Bank;
 
+use Auth;
 use Session;
 use Illuminate\Http\Request;
 use App\Models\Admin\Bank\EWallet;
@@ -46,6 +47,7 @@ class EwalletsController extends Controller
 
         $userEWallet = new UserEWallet();
 
+        $userEWallet->user_id = Auth::user()->id;
         $userEWallet->e_wallet_id = $request->e_wallet_id;
         $userEWallet->ewallet_number = $request->ewallet_number;
 
@@ -98,13 +100,14 @@ class EwalletsController extends Controller
 
         $userEWallet = UserEWallet::find($id);
 
+        $userEWallet->user_id = Auth::user()->id;
         $userEWallet->e_wallet_id = $request->e_wallet_id;
         $userEWallet->ewallet_number = $request->ewallet_number;
 
         if ($userEWallet->save()) {
             Session::flash('success', 'E-Wallet update successfull');
         }
-        return redirect()->route('user-bank-info.index');
+        return redirect()->route('user.bank.index');
     }
 
     /**

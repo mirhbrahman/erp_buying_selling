@@ -15,6 +15,7 @@ class CreateUserBankInfosTable extends Migration
     {
         Schema::create('user_bank_infos', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->string('bank_name');
             $table->string('account_name');
             $table->string('account_number');
@@ -23,6 +24,9 @@ class CreateUserBankInfosTable extends Migration
             $table->text('bank_address');
             $table->string('slug');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
