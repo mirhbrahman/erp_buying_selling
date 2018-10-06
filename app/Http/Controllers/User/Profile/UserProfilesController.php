@@ -48,16 +48,15 @@ class UserProfilesController extends Controller
 
         $this->validate($request, [
             'avater' => 'image| mimes:jpeg,jpg,png,bmp | max:1000',
-            'date_of_birth' => 'required | date',
         ]);
 
         if ($user_profile) {
             // Update...
             $user_profile->user_id = $user_id;
-            $user_profile->work_number = $request->work_number;
-            $user_profile->personal_number = $request->personal_number;
-            $user_profile->fax_number = $request->fax_number;
-            $user_profile->date_of_birth = $request->date_of_birth;
+            $user_profile->work_number = $request->work_number ? $request->work_number : '';
+            $user_profile->personal_number = $request->personal_number ? $request->personal_number : '';
+            $user_profile->fax_number = $request->fax_number ? $request->fax_number : '';
+            $user_profile->date_of_birth = $request->date_of_birth ? $request->date_of_birth : '';
 
             if ($avater= $request->file('avater')) {
                 $avater->move('uploads/user/avater/', $user_profile->avater);
@@ -71,13 +70,13 @@ class UserProfilesController extends Controller
             // Create...
             $user_profile = new UserProfile();
             $user_profile->user_id = $user_id;
-            $user_profile->work_number = $request->work_number;
-            $user_profile->personal_number = $request->personal_number;
-            $user_profile->fax_number = $request->fax_number;
-            $user_profile->date_of_birth = $request->date_of_birth;
+            $user_profile->work_number = $request->work_number ? $request->work_number : '';
+            $user_profile->personal_number = $request->personal_number ? $request->personal_number : '';
+            $user_profile->fax_number = $request->fax_number ? $request->fax_number : '';
+            $user_profile->date_of_birth = $request->date_of_birth ? $request->date_of_birth : '';
 
             if ($avater = $request->file('avater')) {
-                $avater_name = time().'.'.$avater->getClientOriginalExtension();
+                $avater_name = str_slug(Auth::user()->name).'-'.time().'.'.$avater->getClientOriginalExtension();
                 $user_profile->avater = $avater_name;
                 $avater->move('uploads/user/avater/', $avater_name);
             }
