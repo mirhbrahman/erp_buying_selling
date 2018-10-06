@@ -1,84 +1,56 @@
 @extends('layouts.admin')
 @section('content')
 
-    <div class="container">
-        <section style="padding-bottom: 50px; padding-top: 50px;">
+    <div class="card">
+        <div class="card-header">
+            Profile
+        </div>
+        <div class="card-body">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="{{ $userProfile->avater }}" class="img-rounded img-responsive" />
-                    <br />
-                    <br />
-                    <label>Phone Number</label> <br>
+                    @if ($userProfile)
+                        <img src="{{ $userProfile->avater }}" alt="Image not found" class="img-rounded img-responsive" />
+                    @else
+                        <img src="{{ asset('imgs/default_avatar.png') }}" alt="Image not found" class="img-rounded img-responsive" />
+                    @endif
 
-                    <div class="col-sm-5">
-                        <label>Work: </label>
-                    </div>
-                    <div class="col-sm-7">
-                        <p>{{ $userProfile->work_number }}</p>
-                    </div>
-
-                    <div class="col-sm-5">
-                        <label>Personal: </label>
-                    </div>
-                    <div class="col-sm-7">
-                        <p>{{ $userProfile->personal_number }}</p>
-                    </div>
-                    <br> <br>
-                    <hr>
-
-                    <div class="col-sm-5">
-                        <label>Fax Number:  </label>
-                    </div>
-                    <div class="col-sm-7">
-                        <p>{{ $userProfile->fax_number }}</p>
-                    </div>
-                    <br>
-                    <hr>
-
-                    <div class="col-sm-5">
-                        <label>Date of Birth:  </label>
-                    </div>
-                    <div class="col-sm-7">
-                        <p>{{ $userProfile->date_of_birth }}</p>
-                    </div>
-                    <br>
-                    <hr>
-
-                    <div class="" style="text-align: center">
-                        <a href="{{ route('user-profile.create') }}" class="btn btn-success btn-sm"><i class="fa fa-wrench"></i> Profile Setting</a>
-                    </div>
-                    <br />
                 </div>
                 <div class="col-md-8">
-                    <div class="form-group col-md-8">
-                        <h3>User Profile</h3>
-                        <br />
-
-                        <div class="col-sm-4">
-                            <label>Name: </label>
-                        </div>
-                        <div class="col-sm-8">
-                            <p>{{ ucwords(Auth::user()->name) }}</p>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <label>Email: </label>
-                        </div>
-                        <div class="col-sm-8">
-                            <p>{{ Auth::user()->email }}</p>
-                        </div>
-
-                        <a href="{{ route('user-account.edit', Auth::user()->id) }}" class="btn btn-secondary btn-sm pull-right"><i class="fa fa-gear"></i> Account Setting</a>
-
+                    <table class="table">
+                        <tr>
+                            <td>Name</td>
+                            <td><b>{{ ucwords(Auth::user()->name) }}</b></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><b>{{ Auth::user()->email }}</b></td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number</td>
+                            <td>
+                                <p style="margin:0px;"><span>Work: </span> {{ $userProfile ? $userProfile->work_number : '' }}</p>
+                                <p style="margin:0px;"><span>Personal: </span> {{ $userProfile ? $userProfile->personal_number : '' }}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fax Number</td>
+                            <td>{{ $userProfile ? $userProfile->fax_number : ''}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date of Birth</td>
+                            <td>{{ $userProfile ? $userProfile->date_of_birth : '' }}</td>
+                        </tr>
+                    </table>
+                    <div class="pull-right">
+                        <a href="{{ route('user-profile.create') }}" class="btn btn-success btn-sm"><i class="fa fa-wrench"></i> Profile Setting</a>
                     </div>
-                    <br> <br> <br> <br> <br> <br> <br>
-                    <hr> <hr>
+
                 </div>
             </div>
             <!-- ROW END -->
 
+        </div>
 
-        </section>
         <!-- SECTION END -->
     </div>
     <!-- CONATINER END -->

@@ -47,10 +47,7 @@ class UserProfilesController extends Controller
         $user_profile = UserProfile::where('user_id', $user_id)->first();
 
         $this->validate($request, [
-            'avater' => 'mimes:jpeg,jpg,png,bmp | max:1000',
-            'work_number' => 'required',
-            'personal_number' => 'required',
-            'fax_number' => 'required',
+            'avater' => 'image| mimes:jpeg,jpg,png,bmp | max:1000',
             'date_of_birth' => 'required | date',
         ]);
 

@@ -2,7 +2,7 @@
 @section('content')
     <div class="col-md-12" style="padding:0">
         <div class="card">
-            <div class="card-header">Update Account</div>
+            <div class="card-header">Account Settings</div>
 
             <div class="card-body">
                 @include('includes.errors.validation_errors')
