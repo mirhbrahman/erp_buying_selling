@@ -117,7 +117,7 @@
                             <div class="form-group">
                                 <div class="col col-md-3"><label for="role-input" class=" form-control-label">Product Brand</label></div>
                                 <div class="col-12 col-md-9">
-                                    <p style="margin-bottom:5px">Please select produce type before brand</p>
+                                    <p style="margin-bottom:5px">Please select product type before brand</p>
                                     <select name="product_brand" id="product_brand" class="form-control">
                                         <option value="">Please select</option>
                                     </select>
