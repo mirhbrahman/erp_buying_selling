@@ -114,7 +114,7 @@ aside.left-panel {
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="{{ route('user-profile.create', Auth::user()->id) }}"><i class="fa fa-wrench"></i> My Profile</a>
+                            <a class="nav-link" href="{{ route('user-account.index') }}"><i class="fa fa-wrench"></i> My Profile</a>
                             <a class="nav-link" href="{{ route('user-account.edit', Auth::user()->id) }}"><i class="fa fa-gear"></i> Settings</a>
                              <form  id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf

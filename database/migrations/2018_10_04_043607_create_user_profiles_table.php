@@ -15,21 +15,13 @@ class CreateUserProfilesTable extends Migration
     {
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->increments('id');
-
             $table->integer('user_id')->unsigned();
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
-            $table->string('avater');
-
+            $table->string('avater')->nullable();
             $table->string('work_number');
-
             $table->string('personal_number');
-
             $table->string('fax_number');
-            
             $table->string('date_of_birth');
-
             $table->timestamps();
         });
     }
