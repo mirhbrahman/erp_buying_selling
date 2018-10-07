@@ -82,9 +82,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('get-sys-village', 'PublicLocation\SysLocationController@getVillage')->name('getSysVillage');
 });
 
-// User location
+// User Area [Common featurs]
 Route::group(['prefix'=> 'user','middleware' => 'auth'], function () {
     Route::resource('user-location', 'User\Location\UserLocationsController')->only(['index','create','store']);
     Route::resource('user-account', 'User\Account\UserAccountsController');
     Route::resource('user-profile', 'User\Profile\UserProfilesController');
+
+    // User bank
+    Route::get('user-bank', 'User\Bank\UserBanksController@index')->name('user.bank.index');
+    Route::resource('user-bank-info', 'User\Bank\BankInformaionsController');
+    Route::get('user-bank-info/delete/{id}', 'User\Bank\BankInformaionsController@destroy')->name('user-bank-info.destroy');
+    Route::resource('user-mobile-bank', 'User\Bank\MobileBanksController');
+    Route::get('user-mobile-bank/delete/{id}', 'User\Bank\MobileBanksController@destroy')->name('user-mobile-bank.destroy');
+    Route::resource('user-e-wallet', 'User\Bank\EwalletsController');
+    Route::get('user-e-wallet/delete/{id}', 'User\Bank\EwalletsController@destroy')->name('user-e-wallet.destroy');
+
 });

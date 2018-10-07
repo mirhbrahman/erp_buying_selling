@@ -3,6 +3,6 @@
     <ul class="sub-menu children dropdown-menu">
         <li><i class="fa fa-address-card-o"></i><a href="{{ route('user-account.index') }}">Profile</a></li>
         <li><i class="fa fa-map-marker"></i><a href="{{ route('user-location.index') }}">Location</a></li>
-        <li><i class="fa fa-bank"></i><a href="">Bank</a></li>
+        <li><i class="fa fa-bank"></i><a href="{{ route('user.bank.index') }}">Bank</a></li>
     </ul>
 </li>

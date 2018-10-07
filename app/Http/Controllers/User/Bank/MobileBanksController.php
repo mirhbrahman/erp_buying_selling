@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\User\Bank;
 
+use Auth;
+use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Bank\MobileBank;
+use App\Models\Admin\Location\SysCountry;
+use App\Models\User\Bank\UserMobileBank;
 
 class MobileBanksController extends Controller
 {
@@ -14,7 +19,7 @@ class MobileBanksController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -24,7 +29,9 @@ class MobileBanksController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.bank.mobile_bank.create')
+                ->with('countries', SysCountry::all())
+                ->with('mobilebanks', MobileBank::all());
     }
 
     /**
@@ -35,7 +42,26 @@ class MobileBanksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'country_id' => 'required',
+            'mobile_bank_id' => 'required',
+            'account_number' => 'required|min:2|max:191',
+        ]);
+
+        $userMobileBank = new UserMobileBank();
+
+        $userMobileBank->user_id = Auth::user()->id;
+        $userMobileBank->country_id = strtolower($request->country_id);
+        $userMobileBank->mobile_bank_id = $request->mobile_bank_id;
+        $userMobileBank->account_number = $request->account_number;
+
+        if ($userMobileBank->save()) {
+
+            Session::flash('success', 'Mobile Bank create successfull');
+
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -57,7 +83,10 @@ class MobileBanksController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('user.bank.mobile_bank.edit')
+                ->with('countries', SysCountry::all())
+                ->with('mobilebanks', MobileBank::all())
+                ->with('userMobileBank', UserMobileBank::find($id));
     }
 
     /**
@@ -69,7 +98,26 @@ class MobileBanksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'country_id' => 'required',
+            'mobile_bank_id' => 'required',
+            'account_number' => 'required|min:2|max:191',
+        ]);
+
+        $userMobileBank = UserMobileBank::find($id);
+
+        $userMobileBank->user_id = Auth::user()->id;
+        $userMobileBank->country_id = strtolower($request->country_id);
+        $userMobileBank->mobile_bank_id = $request->mobile_bank_id;
+        $userMobileBank->account_number = $request->account_number;
+
+        if ($userMobileBank->save()) {
+
+            Session::flash('success', 'Mobile Bank update successfull');
+
+        }
+
+        return redirect()->route('user.bank.index');
     }
 
     /**
@@ -80,6 +128,11 @@ class MobileBanksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $userMobileBank = UserMobileBank::find($id);
+
+        if ($userMobileBank->delete()) {
+            Session::flash('success', 'Mobile Bank delete successfull');
+        }
+        return redirect()->route('user-bank-info.index');
     }
 }
